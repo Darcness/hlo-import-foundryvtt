@@ -12,9 +12,6 @@
             }
         ]
     },
-    "system": [
-        "pf2e"
-    ],
     "scripts": [],
     "esmodules": [
         "module.js"
