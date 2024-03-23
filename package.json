@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "hlo-import-foundryvtt",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A module template for Foundry VTT",
     "scripts": {
         "update": "yarn upgrade foundry-pc-types"

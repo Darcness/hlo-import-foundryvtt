@@ -30,6 +30,9 @@ const defaultTask = deptask("package", ["build"], async () =>
             console.log(
                 chalk.green(`Zip file ${zipName} has been written`)
             );
+
+            fs.writeFileSync(path.join("package", "module.json"), JSON.stringify(manifest, null, 4));
+
             return resolve();
         });
 
