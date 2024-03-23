@@ -25,8 +25,6 @@
     "packs": [],
     "languages": [],
     "url": "https://github.com/Darcness/hlo-import-foundryvtt",
-    "manifest": "https://github.com/Darcness/hlo-import-foundryvtt/dist/module.json",
-    "download": "http://ldlework.ddns.net:8000/package/AmmoSwitcher-v0.0.1.zip",
     "readme": "",
     "authors": [
         {

@@ -30,6 +30,8 @@ function getManifest() {
     manifest.title = manifest?.title ?? name;
     manifest.version = manifest?.version ?? version;
     manifest.description = manifest?.description ?? description;
+    manifest.manifest = manifest?.manifest ?? `https://raw.githubusercontent.com/Darcness/hlo-import-foundryvtt/blob/v${version}/module.json`;
+    manifest.download = manifest?.download ?? `https://github.com/Darcness/hlo-import-foundryvtt/releases/download/v${version}/${name}-v${version}.zip`;
     return manifest;
 }
 
