@@ -2,9 +2,9 @@
     "private": true,
     "name": "hlo-import-foundryvtt",
     "version": "0.1.1",
-    "description": "A module template for Foundry VTT",
+    "description": "A HeroLab Online importer for PF2e characters on FoundryVTT",
     "scripts": {
-        "update": "yarn upgrade foundry-pc-types"
+        "update": "yarn up foundry-pc-types"
     },
     "gulp": {
         "sourcePath": "src",
