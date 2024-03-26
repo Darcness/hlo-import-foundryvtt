@@ -7,45 +7,46 @@ import archiver from "archiver";
 import settings from "./settings";
 import { deptask } from "./lib";
 
-const defaultTask = deptask("package", ["build"], async () =>
+const defaultTask = deptask(
+  "package",
+  ["build"],
+  async () =>
     new Promise<void>((resolve, _) => {
-        const manifest = fs.readJSONSync(path.join(settings.buildPath, "module.json"));
+      const manifest = fs.readJSONSync(path.join(settings.buildPath, "module.json"));
 
-        if (yargs.argv.clean || yargs.argv.c) {
-            console.log('Removing all packaged files');
-            fs.removeSync('package');
-            return;
-        }
+      if (yargs.argv.clean || yargs.argv.c) {
+        console.log("Removing all packaged files");
+        fs.removeSync("package");
+        return;
+      }
 
-        // Ensure there is a directory to hold all the packaged versions
-        fs.ensureDirSync('package');
+      // Ensure there is a directory to hold all the packaged versions
+      fs.ensureDirSync("package");
 
-        // Initialize the zip file
-        const zipName = `${manifest.id}-v${manifest.version}.zip`;
-        const zipFile = fs.createWriteStream(path.join('package', zipName));
-        const zip = archiver('zip', { zlib: { level: 9 } });
+      // Initialize the zip file
+      const zipName = `${manifest.id}-v${manifest.version}.zip`;
+      const zipFile = fs.createWriteStream(path.join("package", zipName));
+      const zip = archiver("zip", { zlib: { level: 9 } });
 
-        zipFile.on('close', () => {
-            console.log(chalk.green(zip.pointer() + ' total bytes'));
-            console.log(
-                chalk.green(`Zip file ${zipName} has been written`)
-            );
+      zipFile.on("close", () => {
+        console.log(chalk.green(zip.pointer() + " total bytes"));
+        console.log(chalk.green(`Zip file ${zipName} has been written`));
 
-            fs.writeFileSync(path.join("package", "module.json"), JSON.stringify(manifest, null, 4));
+        fs.writeFileSync(path.join("package", "module.json"), JSON.stringify(manifest, null, 4));
 
-            return resolve();
-        });
+        return resolve();
+      });
 
-        zip.on('error', (err) => {
-            throw err;
-        });
+      zip.on("error", (err) => {
+        throw err;
+      });
+      zip.pipe(zipFile);
 
-        zip.pipe(zipFile);
+      // Add the directory with the final code
+      zip.directory(settings.buildPath, manifest.name);
 
-        // Add the directory with the final code
-        zip.directory(settings.buildPath, manifest.name);
-
-        zip.finalize();
-    }));
+      zip.finalize();
+    })
+);
 
 export { defaultTask as default };
