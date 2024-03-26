@@ -18,7 +18,7 @@ export default function registerSettings() {
     });
     game.settings.register(MODULE_NAME, SettingKeys.DebugEnabled, {
         name: "Debug Mode",
-        hint: "Please enter your HeroLab Online User token.  This token allows the plugin to access the HeroLab Online site.",
+        hint: "Sends additional debugging information to the console.",
         scope: "world",
         config: true,
         type: Boolean,

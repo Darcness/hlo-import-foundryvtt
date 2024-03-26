@@ -26,8 +26,7 @@ function readManifest() {
 
 function getManifest() {
     const manifest: any = readManifest();
-    manifest.name = manifest?.name ?? name;
-    manifest.title = manifest?.title ?? name;
+    manifest.id = manifest?.id ?? name;
     manifest.version = manifest?.version ?? version;
     manifest.description = manifest?.description ?? description;
     manifest.manifest = manifest?.manifest ?? `https://github.com/Darcness/hlo-import-foundryvtt/releases/download/v${version}/module.json`;
