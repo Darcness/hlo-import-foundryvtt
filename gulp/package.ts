@@ -21,7 +21,7 @@ const defaultTask = deptask("package", ["build"], async () =>
         fs.ensureDirSync('package');
 
         // Initialize the zip file
-        const zipName = `${manifest.name}-v${manifest.version}.zip`;
+        const zipName = `${manifest.id}-v${manifest.version}.zip`;
         const zipFile = fs.createWriteStream(path.join('package', zipName));
         const zip = archiver('zip', { zlib: { level: 9 } });
 
