@@ -1,41 +1,22 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "lib": [
-            "dom",
-            "es5",
-            "es6"
-        ],
-
-        "sourceMap": true,
-        "outDir": "dist/",
-
-        "types": [
-            "foundry-pc-types",
-            "jquery"
-        ],
-
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "resolveJsonModule": true,
-        "removeComments": true,
-
-        "baseUrl": ".",
-        "paths": {
-            "@src/*": ["src/ts/*"],
-            "@hooks/*": ["src/ts/hooks/*"],
-
-            "package": ["./package.json"],
-            "utils": ["src/ts/utils"],
-            "templates": ["src/templates/templates.json"]
-        }
-    },
-    "include": [
-        "gulpfile.ts",
-        "gulp/**/*.ts",
-        "src/**/*.ts"
-    ]
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "target": "ES6",
+    "lib": ["DOM", "ES6", "ES2017", "ES2018"],
+    "types": ["svelte","@league-of-foundry-developers/foundry-vtt-types","node"],
+    "allowUmdGlobalAccess": true,
+    "strict": true,
+    /**
+     * Typecheck JS in `.svelte` and `.js` files by default.
+     * Disable checkJs if you'd like to use dynamic types in JS.
+     * Note that setting allowJs false does not prevent the use
+     * of JS in `.svelte` files.
+     */
+    "allowJs": true,
+    "checkJs": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
