@@ -1,4 +1,4 @@
-import gulp from "gulp";
+import * as gulp from "gulp";
 
 import clean from "./gulp/clean";
 import code from "./gulp/code";

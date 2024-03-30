@@ -12,8 +12,8 @@ import browserify, { BrowserifyObject } from "browserify";
 
 
 export class BundleOptions {
-    src: string;
-    dst: string;
+    src: string = "";
+    dst: string = "";
     standalone?: string;
     vendors?: string[];
     includeExternal?: boolean = true;
